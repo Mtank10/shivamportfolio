@@ -32,16 +32,17 @@ export default function Experience() {
               
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-                  Backend Developer
+                  Full Stack Developer - Freelancing
                 </h3>
                 <p className="text-lg text-black dark:text-white/80 mb-2">
-                  Eduuis techno Solutions pvt Ltd • May 2024 - Feb 2025
+                  Self-Employed • May 2024 – Present
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-300">
-                  <li>Developed secure APIs to allow parents to monitor and manage child activities.Implemented role-based access control (RBAC) for parents and children with different permissions.</li>
-                  <li>Implemented JWT authentication for secure login and sessionmanagement.Managed structured data using MySQL and optimized queries for fast retrieval.</li>
-                  <li>Built mechanisms for parents to restrict access to specific apps, websites, or content.Designed APIs to track app usage, screen time, and location history of the child</li>
-                </ul>
+                  <li>Develop full-stack applications for clients across e-commerce, productivity domains.</li>
+                  <li> Architect RESTful APIs using Express.js and GraphQL with PostgreSQL/MongoDB backends.</li>
+<li>Implement responsive UIs with React/Next.js and state management solutions.</li>
+<li> Collaborate with clients through requirement analysis, sprint planning, and iterative delivery.</li>
+                   </ul>
               </div>
             </div>
           </motion.div>
