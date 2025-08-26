@@ -20,7 +20,7 @@ export default function Header() {
     <section 
       id="home"
       style={{ 
-        background: 'linear-gradient(135deg, #43cea2, #185a9d)',
+        background: 'linear-gradient(135deg, #0a4432ff, #185a9d)',
         color: '#ffffff'
       }}
       className="pt-32 pb-20 dark:bg-gradient-to-br dark:from-#141e30 dark:to-#243b55"
