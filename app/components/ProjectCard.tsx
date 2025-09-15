@@ -1,52 +1,80 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ExternalLinkIcon, CodeBracketIcon } from "@heroicons/react/24/outline";
 
-export default function ProjectCard({ project }: { project: any }) {
+export default function ProjectCard({ project, index }: { project: any; index: number }) {
   return (
-    <motion.a
-      href={project.githubUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 20 }}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className="rounded-xl overflow-hidden shadow-xl block hover:scale-[1.02] transition-transform"
-      style={{
-        background: 'linear-gradient(145deg, #43cea280, #185a9d80)',
-        color: '#ffffff'
-      }}
+      transition={{ delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="group relative bg-dark-card border border-primary/20 rounded-xl overflow-hidden hover:border-primary/40 transition-all duration-300 glow-border"
     >
-      <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/3 relative h-48">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
-        </div>
+      {/* Project Image */}
+      <div className="relative h-48 overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-card via-transparent to-transparent opacity-60"></div>
         
-        <div className="p-8 md:w-2/3">
-          <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tech.map((tech: string, i: number) => (
-              <span
-                key={i}
-                className="px-4 py-1 rounded-full bg-white/10 text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-          <ul className="space-y-3">
-            {project.points.map((point: string, i: number) => (
-              <li key={i} className="flex items-start">
-                <span className="w-2 h-2 bg-white rounded-full mt-2 mr-3" />
-                {point}
-              </li>
-            ))}
-          </ul>
+        {/* Overlay buttons */}
+        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-dark-bg/80 backdrop-blur-sm rounded-lg text-primary hover:bg-primary hover:text-dark-bg transition-all duration-300"
+          >
+            <ExternalLinkIcon className="w-5 h-5" />
+          </a>
         </div>
       </div>
-    </motion.a>
+      
+      {/* Project Content */}
+      <div className="p-6">
+        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-primary transition-colors duration-300 font-mono">
+          {project.title}
+        </h3>
+        
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tech.map((tech: string, i: number) => (
+            <span
+              key={i}
+              className="px-3 py-1 text-xs bg-primary/10 text-primary border border-primary/30 rounded-full font-mono"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        
+        {/* Project Description */}
+        <ul className="space-y-2 text-gray-300">
+          {project.points.slice(0, 3).map((point: string, i: number) => (
+            <li key={i} className="flex items-start text-sm">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              {point}
+            </li>
+          ))}
+        </ul>
+
+        {/* View Project Link */}
+        <div className="mt-6 pt-4 border-t border-primary/20">
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-colors duration-300 font-mono text-sm"
+          >
+            <CodeBracketIcon className="w-4 h-4" />
+            View Project
+          </a>
+        </div>
+      </div>
+    </motion.div>
   );
 }

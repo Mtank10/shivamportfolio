@@ -13,46 +13,40 @@ export default function Navbar() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <nav 
-      style={{ 
-        background: theme === 'dark' 
-          ? 'linear-gradient(45deg, #141e30, #243b55)'
-          : 'linear-gradient(45deg, #43cea2, #185a9d)'
-      }}
-      className="fixed w-full top-0 z-50 text-white shadow-lg"
-    >
+    <nav className="fixed w-full top-0 z-50 bg-dark-bg/90 backdrop-blur-md border-b border-primary/20">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold">
-          Shivam Raj
+        <Link href="/" className="text-2xl font-bold font-mono text-primary glow-text">
+          &lt;ShivamRaj /&gt;
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-8">
           {['home', 'projects', 'experience','skills','contact'].map((section) => (
             <Link
               key={section}
               href={`#${section}`}
-              className="hover:text-gray-200 transition-colors"
+              className="text-gray-300 hover:text-primary transition-all duration-300 relative group font-mono"
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
           
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20"
+            className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 transition-all duration-300"
           >
             {theme === 'dark' ? (
-              <SunIcon className="w-6 h-6" />
+              <SunIcon className="w-5 h-5" />
             ) : (
-              <MoonIcon className="w-6 h-6" />
+              <MoonIcon className="w-5 h-5" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-primary"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -67,14 +61,14 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute text-[#243b55] top-full left-0 w-full bg-inherit md:hidden bg-white/80"
+            className="absolute top-full left-0 w-full bg-dark-bg/95 backdrop-blur-md border-b border-primary/20 md:hidden"
           >
-            <div className="flex flex-col items-center py-4 gap-4">
+            <div className="flex flex-col items-center py-6 gap-4">
               {['home', 'projects', 'experience','skills','contact'].map((section) => (
                 <Link
                   key={section}
                   href={`#${section}`}
-                  className="py-2"
+                  className="py-2 text-gray-300 hover:text-primary transition-colors font-mono"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -82,7 +76,7 @@ export default function Navbar() {
               ))}
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="mt-4"
+                className="mt-4 px-4 py-2 rounded-lg bg-primary/10 text-primary border border-primary/30 font-mono"
               >
                 {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
               </button>

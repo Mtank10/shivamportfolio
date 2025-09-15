@@ -1,1 +1,87 @@
 @import "tailwindcss";
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0f1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #14b8a6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d9488;
+}
+
+/* Glowing effects */
+.glow-text {
+  text-shadow: 0 0 10px #14b8a6, 0 0 20px #14b8a6, 0 0 30px #14b8a6;
+}
+
+.glow-border {
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(20, 184, 166, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Animated gradient */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #0a0f1c, #1e293b, #0f172a, #14532d);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Neon button effect */
+.neon-button {
+  position: relative;
+  background: transparent;
+  border: 2px solid #14b8a6;
+  color: #14b8a6;
+  transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+  background: #14b8a6;
+  color: #0a0f1c;
+  box-shadow: 
+    0 0 20px #14b8a6,
+    inset 0 0 20px rgba(20, 184, 166, 0.1);
+}
+
+/* Circuit lines */
+.circuit-line {
+  position: relative;
+}
+
+.circuit-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #14b8a6, transparent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
